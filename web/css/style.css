@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
+
+:root {
+    --color-primary: #424242;
+    --color-secondary: #202020;
+    --color-text: #e3e3e3;
+}
+
+body {
+    font-family: 'Play', sans-serif;
+    background-color: var(--color-primary);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 10px 0;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#streak {
+    position: absolute;
+    right: 50px;
+    font-size: 2rem;
+    color: grey;
+}
+
+.streak {
+    background: linear-gradient(to top, #ff0000, #ff5a00, #ff9a00, #ffce00, #ffe808);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+main {
+    color: var(--color-text);
+    margin-top: 10vh;
+}
+
+.question {
+    margin-bottom: 10vh;
+}
+
+.question h1 {
+    font-size: 6rem;
+}
+
+.solutions {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2.5rem;
+}
+
+.answer {
+    margin-bottom: 10vh;
+}
+
+.answer h3 {
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.answer-input {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    max-width: 40%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.about {
+    max-width: 50vmin;
+}
