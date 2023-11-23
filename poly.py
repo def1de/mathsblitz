@@ -6,6 +6,7 @@ def generate_polynomial():
 
     # Generate random integer roots for the polynomial
     roots = np.random.randint(-10, 11, power)
+    print(roots)
 
     # Build the polynomial using numpy's poly function
     polynomial_coefficients_float = np.poly(roots)

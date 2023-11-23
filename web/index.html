@@ -19,7 +19,7 @@
     </header>
     <main class="container-fluid d-flex justify-content-center align-items-center flex-column">
         <div class="question">
-            <h1>25x^2-3x+15=0</h1>
+            <h1><span class="coeff">?</span>x^2+<span class="coeff">?</span>x+<span class="coeff">?</span>=0</h1>
             <div class="solutions">
                 <span>A = 2</span>
                 <span>B = 3</span>
@@ -38,6 +38,57 @@
             </p>
         </div>
     </main>
+    <div class="pop">
+        <div class="pop_inner">
+            <div id="closePop" class="close">
+                <i class="bi bi-x-lg"></i>
+            </div>
+            <div class="pop_question">
+                <h1>cos(x)=1</h1>
+                <div class="pop_answer">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">My answer is</span>
+                        <input id="pop-answer" type="text" class="form-control" aria-label="answer">
+                        <button id="sendBtn" class="input-group-text"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop">
+        <div class="pop_inner">
+            <div id="closePop" class="close">
+                <i class="bi bi-x-lg"></i>
+            </div>
+            <div class="pop_question">
+                <h1>cos(x)=1</h1>
+                <div class="pop_answer">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">My answer is</span>
+                        <input id="pop-answer" type="text" class="form-control" aria-label="answer">
+                        <button id="sendBtn" class="input-group-text"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pop">
+        <div class="pop_inner">
+            <div id="closePop" class="close">
+                <i class="bi bi-x-lg"></i>
+            </div>
+            <div class="pop_question">
+                <h1>cos(x)=1</h1>
+                <div class="pop_answer">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">My answer is</span>
+                        <input id="pop-answer" type="text" class="form-control" aria-label="answer">
+                        <button id="sendBtn" class="input-group-text"><i class="bi bi-send"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     streak = document.getElementById("streak")
@@ -48,6 +99,31 @@
         } else {
             streak.classList.remove("streak")
         }
+    }
+
+    function closePopUp(e) {
+        e.classList.remove("shown")
+    }
+
+    function setCoeffs(e) {
+
+    }
+
+    popups = document.getElementsByClassName("pop")
+    coeffs = document.getElementsByClassName("coeff")
+    for (let i = 0; i < coeffs.length; i++) {
+        coeffs[i].addEventListener("mouseup", () => {
+            popups[i].classList.add("shown")
+        })
+        closeBtn = popups[i].querySelector("#closePop")
+        closeBtn.addEventListener("mouseup", () => {
+            closePopUp(popups[i])
+        })
+        sendBtn = popups[i].querySelector("#sendBtn")
+        sendBtn.addEventListener("mouseup", () => {
+            closePopUp(popups[i])
+            coeffs[i].innerText = popups[i].querySelector("#pop-answer").value
+        })
     }
 
 </script>
