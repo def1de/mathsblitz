@@ -1,5 +1,5 @@
 import numpy as np
-
+#pablo
 def generate_polynomial():
     # Generate a random power for the polynomial
     power = np.random.randint(3, 6)  # You can adjust the range of powers as needed
