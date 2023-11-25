@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
 
 :root {
-    --color-primary: #424242;
+    --color-primary: #0d0d0d;
     --color-secondary: #202020;
     --color-text: #e3e3e3;
 }
@@ -57,6 +57,34 @@ main {
     cursor: pointer;
 }
 
+#blur {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: none;
+}
+
+#blur::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    background-attachment: fixed;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    animation: fadeIn .6s;
+}
+
+#blur.active {
+    display: block;
+}
+
 .pop {
     display: none;
     background-color: var(--color-secondary);
@@ -72,6 +100,16 @@ main {
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 15px;
+}
+
+.pop.shown:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 100%;
+    right: 100%;
+    background-color: black;
+    z-index: 5000;
 }
 
 .pop.shown {
