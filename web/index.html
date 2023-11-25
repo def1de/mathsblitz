@@ -55,7 +55,7 @@
                 <i class="bi bi-x-lg"></i>
             </div>
             <div class="pop_question">
-                <h1>cos(x)=1</h1>
+                <h1>sin(x)=1</h1>
                 <div class="pop_answer">
                     <div class="input-group mb-3">
                         <span class="input-group-text">My answer is</span>
@@ -71,7 +71,10 @@
             <div id="closePop" class="close">
                 <i class="bi bi-x-lg"></i>
             </div>
-            <div class="pop_question">
+            <h1 class="jamal_title">JAMAL</h1>
+            <img class="jamal" src="https://t.ctcdn.com.br/rPY6z7TjAZv0oThd7b94my2HtHY=/640x360/smart/i803253.jpeg"
+                alt="">
+            <!-- <div class="pop_question">
                 <h1>cos(x)=1</h1>
                 <div class="pop_answer">
                     <div class="input-group mb-3">
@@ -80,7 +83,7 @@
                         <button id="sendBtn" class="input-group-text"><i class="bi bi-send"></i></button>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
@@ -107,6 +110,7 @@
         coeffs[i].addEventListener("mouseup", () => {
             popups[i].classList.add("shown")
             bgBlur.classList.add("active")
+            document.getElementsByClassName("jamal")[0].classList.add("shown")
         })
         closeBtn = popups[i].querySelector("#closePop")
         closeBtn.addEventListener("mouseup", () => {

@@ -118,6 +118,33 @@ main {
     animation: popup .9s ease-in forwards;
 }
 
+.jamal_title {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.jamal.shown {
+    animation: jamal 1.8s ease-in forwards;
+}
+
+@keyframes jamal {
+    0% {
+        rotate: 0deg;
+        scale: 0.1;
+    }
+
+    90% {
+        rotate: 1800deg;
+        scale: 1.5;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
 @keyframes popup {
     0% {
         width: 0;
