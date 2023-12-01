@@ -1,6 +1,7 @@
 import quadratic
 import complete_square
 import pythagoras
+import json
 
 
 roots,coeff,poly=quadratic.generate_polynomial()
@@ -11,27 +12,34 @@ if coeff[1]>2: question2 = pythagoras.find_sides(coeff[1])
 else: question2 = complete_square.creating_vertex_equation(coeff[1])
 question3= complete_square.creating_vertex_equation(coeff[2])
 
-Questions = {
-  "Stage1" : [{
-    "question" : question1,
-    "answer" : answer1,},
-    {"question" : question2,
-    "answer" : answer2},
-    {"question" : question3,
-    "answer" : answer3}],
+def get_json():
+  questions = {
+    "Stage1":[
+        {
+          "question" : str(question1),
+          "answer" : str(answer1)
+      },
+      {
+        "question" : str(question2),
+        "answer" : str(answer2)
+      },
+      {
+        "question" : str(question3),
+        "answer" : str(answer3)
+      }
+      ],
 
-  "Stage2":{
+    "Stage2":{
       "poly" : str(poly),
-      "roots" : roots 
-  },
+      "roots" : str(roots)
+    },
 
-  "Stage3":{
-      "question" : [],
-      "answer" : []
+    "Stage3":{
+        "question" : [],
+        "answer" : []
+    }
   }
-}
-
-print(Questions)
+  return json.dumps(questions)
 
 #print (poly)
 #print(roots)
