@@ -9,7 +9,6 @@ def create_new_quadratic(roots):
     polynomial_coefficients_int = np.round(polynomial_coefficients_float).astype(int)
     #polynomial_coefficients_int*=np.random.randint(1,4)
     poly = np.poly1d(polynomial_coefficients_int)
-    print(poly)
     return poly
 
 #creates quadratic equations with a vertex equal to coefficient

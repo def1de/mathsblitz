@@ -9,9 +9,7 @@ def find_sides(side):
     for i in triplets[::-1]:
         for y in range (0,3):
             if (side/i[y]).is_integer()==True:
-                print(i)
                 multiple = side/i[y]
-                print("multiple =", multiple)
                 single_triplet = [z * multiple for z in i]
                     
                 a,b,c,unkown = single_triplet[0],single_triplet[1],single_triplet[2],single_triplet[y]

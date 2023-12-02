@@ -6,7 +6,6 @@ import json
 
 roots,coeff,poly=quadratic.generate_polynomial()
 answer1,answer2,answer3=coeff[0],coeff[1],coeff[2]
-print("potato",coeff)
 question1 = complete_square.creating_vertex_equation(coeff[0])
 if coeff[1]>2: question2 = pythagoras.find_sides(coeff[1])
 else: question2 = complete_square.creating_vertex_equation(coeff[1])
