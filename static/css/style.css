@@ -231,7 +231,7 @@ main {
 }
 
 .pop_inner .pop_question h1 {
-  font-size: 5rem;
+  font-size: fit-content;
 }
 
 .pop_answer > .input-group {
@@ -286,8 +286,13 @@ main {
   align-self: center;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.pop_inner .pop_answer .poly-inp::-webkit-inner-spin-button,
+.pop_inner .pop_answer .poly-inp::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.pop_inner .pop_answer .poly-inp[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

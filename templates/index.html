@@ -19,7 +19,7 @@
       rel="stylesheet"
       href="{{ url_for('static',filename='css/style.css') }}"
     />
-    <title>Document</title>
+    <title>MathsBlitz</title>
   </head>
 
   <body>
@@ -35,17 +35,17 @@
         <h1><span class="coeff">?</span>x<sup>2</sup>+<span class="coeff">?</span>x+<span class="coeff">?</span>=0</h1>
             <div class="solutions">
               <span>
-                A = <input type="text" class="answer-input" placeholder="Hmmm..." />
+                x<sub>1</sub> = <input type="number" class="answer-input" placeholder="{{ data.Stage2.roots[0] }}" onchange="updateQuestion()" />
               </span>
               <span>
-                B = <input type="text" class="answer-input" placeholder="WTF is this?" />
+                x<sub>2</sub> = <input type="number" class="answer-input" placeholder="{{ data.Stage2.roots[1] }}" onchange="updateQuestion()" />
               </span>
             </div>
         </div>
       </div>
 
       <div class="answer">
-        <h1>\[ \int_{a}^{b} (x + 2) \,dx = \]</h1>
+        <h1 id="finalQuestion">{{data.Stage3.question}}</h1>
         <input
           onchange="setStreak()"
           id="answer-field"
@@ -54,21 +54,24 @@
         />
       </div>
     </main>
+
+    {% for el in data.Stage1 %}
     <div class="pop">
       <div class="pop_inner">
         <div id="closePop" class="close">
           <i class="bi bi-x-lg"></i>
         </div>
         <div class="pop_question">
-          <h1>cos(x)=1</h1>
+          <h1>{{el.question}}</h1>
           <div class="pop_answer">
             <div class="input-group mb-3">
               <span class="input-group-text">My answer is</span>
               <input
                 id="pop-answer"
-                type="text"
+                type="number"
                 class="form-control"
                 aria-label="answer"
+                value="{{el.answer}}"
               />
               <button id="sendBtn" class="input-group-text">
                 <i class="bi bi-send"></i>
@@ -78,53 +81,9 @@
         </div>
       </div>
     </div>
-    <div class="pop">
-      <div class="pop_inner">
-        <div id="closePop" class="close">
-          <i class="bi bi-x-lg"></i>
-        </div>
-        <div class="pop_question">
-          <h1>sin(x)=1</h1>
-          <div class="pop_answer">
-            <div class="input-group mb-3">
-              <span class="input-group-text">My answer is</span>
-              <input
-                id="pop-answer"
-                type="text"
-                class="form-control"
-                aria-label="answer"
-              />
-              <button id="sendBtn" class="input-group-text">
-                <i class="bi bi-send"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pop">
-      <div class="pop_inner">
-        <div id="closePop" class="close">
-          <i class="bi bi-x-lg"></i>
-        </div>
-        <h1 class="jamal_title">JAMAL</h1>
-        <img
-          class="jamal"
-          src="https://t.ctcdn.com.br/rPY6z7TjAZv0oThd7b94my2HtHY=/640x360/smart/i803253.jpeg"
-          alt=""
-        />
-        <!-- <div class="pop_question">
-                <h1>cos(x)=1</h1>
-                <div class="pop_answer">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">My answer is</span>
-                        <input id="pop-answer" type="text" class="form-control" aria-label="answer">
-                        <button id="sendBtn" class="input-group-text"><i class="bi bi-send"></i></button>
-                    </div>
-                </div>
-            </div> -->
-      </div>
-    </div>
+    {% endfor %}
+
+    <span>{{data}}</span>
   </body>
   <script
     type="text/javascript"
@@ -132,9 +91,11 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
   ></script>
   <script>
-    streak = document.getElementById("streak");
-    input = document.getElementById("answer-field");
-    bgBlur = document.getElementById("blur");
+    const streak = document.getElementById("streak");
+    const input = document.getElementById("answer-field");
+    const bgBlur = document.getElementById("blur");
+    const question = document.getElementById("finalQuestion");
+
     function setStreak(e) {
       if (input.value >= 100) {
         streak.classList.add("streak");
@@ -167,4 +128,16 @@
       });
     }
   </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script>
+      function updateQuestion() {
+        let a = 1; // replace with your actual value
+        let b = 2; // replace with your actual value
+
+        question.innerHTML = `\\[ \\int_{${a}}^{${b}} (x + 2) \\,dx = \\]`;
+
+        // This tells MathJax to typeset the page again
+        MathJax.typeset();
+      }
+    </script>
 </html>

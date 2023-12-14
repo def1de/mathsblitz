@@ -6,4 +6,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html", data=jsonify(get_json()))
+    return render_template("index.html", data=get_json())

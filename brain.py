@@ -28,12 +28,12 @@ def get_json():
     ],
     "Stage2": {
       "poly": str(poly),
-      "roots": str(roots)
+      "roots": sorted(list(roots))
     },
     "Stage3": {
-      "question": [],
+      "question": r"\[ \int_{x_1}^{x_2} (x + 2) \,dx = \]",
       "answer": []
     }
   }
   
-  return json.dumps(questions)
+  return questions
