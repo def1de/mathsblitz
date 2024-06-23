@@ -17,21 +17,14 @@ def generate_polynomial():
     poly = np.poly1d(polynomial_coefficients_int)
 
     # Get powers and coefficients as lists
-    powers, coefficients = get_powers_and_coefficients(poly)
+    powers = list(range(power, -1, -1))  # List of powers in descending order
+    coefficients = poly.coeffs.tolist()  # Coefficients as a list
 
     # Write data into a dictionary
-    data = {}
-    for power, coeff in zip(powers, coefficients):
-        data[power]=coeff
+    data = dict(zip(powers, coefficients))
 
     return data
 
-def get_powers_and_coefficients(poly):
-    powers = list(range(len(poly)+1))  # List of powers
-    coefficients = poly.coeffs  # Coefficients
-
-    return powers[::-1], coefficients
-
-# Exectute only if this file is not a dependencie
+# Execute only if this file is not a dependency
 if __name__ == "__main__":
     print(generate_polynomial())
