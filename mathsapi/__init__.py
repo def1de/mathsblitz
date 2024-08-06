@@ -1,14 +1,17 @@
 import mathsapi.quadratic as quadratic
-import mathsapi.complete_square as complete_square
+import mathsapi.polynomials as polynomials
 import mathsapi.pythagoras as pythagoras
 
 def get_json():
   roots, coeff, poly = quadratic.generate_polynomial()
-  answer1, answer2, answer3 = coeff[0], coeff[1], coeff[2]
   
-  question1 = complete_square.creating_vertex_equation(coeff[0])
-  question2 = pythagoras.find_sides(coeff[1]) if coeff[1] > 2 else complete_square.creating_vertex_equation(coeff[1])
-  question3 = complete_square.creating_vertex_equation(coeff[2])
+  question1 = polynomials.creating_vertex_equation(coeff[0])
+  question2 = pythagoras.find_sides(coeff[1]) if coeff[1] > 2 else polynomials.creating_vertex_equation(coeff[1])
+  question3 = polynomials.creating_vertex_equation(coeff[2])
+
+  answer1, answer2, answer3 = coeff[0], coeff[1], coeff[2]
+
+  final_question, final_answer = polynomials.integral(roots[0], roots[1])
   
   questions = {
     "Stage1": [
@@ -30,8 +33,8 @@ def get_json():
       "roots": sorted(list(roots))
     },
     "Stage3": {
-      "question": r"\[ \int_{x_1}^{x_2} (x + 2) \,dx = \]",
-      "answer": []
+      "question": final_question,
+      "answer": final_answer
     }
   }
   
