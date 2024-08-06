@@ -7,13 +7,11 @@ import time
 import threading
 
 def get_json():
-    roots, coeff, poly = quadratic.generate_polynomial()
+    roots, coeff = quadratic.generate_polynomial()
     
     question1 = polynomials.creating_vertex_equation(coeff[0])
     question2 = pythagoras.find_sides(coeff[1]) if coeff[1] > 2 else polynomials.creating_vertex_equation(coeff[1])
     question3 = polynomials.creating_vertex_equation(coeff[2])
-
-    answer1, answer2, answer3 = coeff[0], coeff[1], coeff[2]
 
     final_question, final_answer = polynomials.integral(roots[0], roots[1])
     
@@ -34,10 +32,11 @@ def get_json():
         }
     }
     
-    ans_roots = sorted(list(roots)) 
-    answers = {
-        str(answer1), str(answer2), str(answer3), str(ans_roots[0]), str(ans_roots[1]), str(final_answer)
-    }
+    ans_roots = sorted(list(roots))
+    answers = []
+    answers += [str(i) for i in coeff]
+    answers += [str(i) for i in ans_roots]
+    answers += [str(final_answer)]
     
     return questions, answers
 

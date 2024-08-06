@@ -1,6 +1,5 @@
 from flask import Flask, render_template, jsonify, request
 from mathsapi import get_questions, get_answers
-import json
 
 app = Flask(__name__)
 
@@ -11,7 +10,6 @@ def index():
 @app.route("/validate", methods=["POST"])
 def validate():
     req = request.get_json()
-    print(req)
     data = req["answers"]
     print(data)
     answers = get_answers()
