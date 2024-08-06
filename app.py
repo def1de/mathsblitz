@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-from brain import get_json
+from mathsapi import get_json
 import json
 
 app = Flask(__name__)

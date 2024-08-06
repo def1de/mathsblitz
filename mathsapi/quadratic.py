@@ -1,5 +1,4 @@
 import numpy as np
-import complete_square
 
 def generate_polynomial():
     power = 2  

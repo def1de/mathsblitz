@@ -1,7 +1,6 @@
-import quadratic
-import complete_square
-import pythagoras
-import json
+import mathsapi.quadratic as quadratic
+import mathsapi.complete_square as complete_square
+import mathsapi.pythagoras as pythagoras
 
 def get_json():
   roots, coeff, poly = quadratic.generate_polynomial()
