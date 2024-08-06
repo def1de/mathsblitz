@@ -1,9 +1,22 @@
-from flask import Flask, render_template, jsonify
-from mathsapi import get_result
+from flask import Flask, render_template, jsonify, request
+from mathsapi import get_questions, get_answers
 import json
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html", data=get_result())
+    return render_template("index.html", data=get_questions())
+
+@app.route("/validate", methods=["POST"])
+def validate():
+    req = request.get_json()
+    print(req)
+    data = req["answers"]
+    print(data)
+    answers = get_answers()
+    print(answers)
+    res = list(map(lambda x, y: x == y, data, answers))
+    print(res)
+
+    return jsonify(res)

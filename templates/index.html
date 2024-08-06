@@ -26,33 +26,47 @@
     <div id="blur"></div>
     <header class="container-fluid header">
       <h2>MathsBlitz</h2>
-      <i id="streak" class="bi bi-fire">1</i>
+      <div class="streakbox">
+        <i class="bi bi-fire"></i>
+        <span id="streak">0</span>
+      </div>
     </header>
     <main
       class="container-fluid d-flex justify-content-center align-items-center flex-column"
     >
       <div class="question">
-        <h1><span class="coeff">?</span>x<sup>2</sup>+<span class="coeff">?</span>x+<span class="coeff">?</span>=0</h1>
-            <div class="solutions">
-              <span>
-                x<sub>1</sub> = <input type="number" class="answer-input" id="x1" placeholder="{{ data.Stage2.roots[0] }}" onchange="updateQuestion()" />
-              </span>
-              <span>
-                x<sub>2</sub> = <input type="number" class="answer-input" id="x2" placeholder="{{ data.Stage2.roots[1] }}" onchange="updateQuestion()" />
-              </span>
-            </div>
+        <h1>
+          <span class="coeff">?</span>x<sup>2</sup>+<span class="coeff">?</span
+          >x+<span class="coeff">?</span>=0
+        </h1>
+        <div class="solutions">
+          <span>
+            x<sub>1</sub> =
+            <input
+              type="number"
+              class="answer-input"
+              id="x1"
+              onchange="updateQuestion()"
+            />
+          </span>
+          <span>
+            x<sub>2</sub> =
+            <input
+              type="number"
+              class="answer-input"
+              id="x2"
+              onchange="updateQuestion()"
+            />
+          </span>
         </div>
       </div>
 
       <div class="answer">
         <h1 id="finalQuestion"></h1>
-        <input
-          onchange="setStreak()"
-          id="answer-field"
-          class="answer-input"
-          type="number"
-        />
+        <input id="answer-field" class="answer-input" type="number" />
       </div>
+
+      <div class="btn btn-danger" onclick="validate()">Submit</div>
     </main>
 
     {% for el in data.Stage1 %}
@@ -83,63 +97,15 @@
     </div>
     {% endfor %}
 
-    <span>{{data}}</span>
-    <span id="poly" class="hidden">{{data.Stage3.question}}</span>
+    <span id="poly" class="d-none">{{data.Stage3.question}}</span>
   </body>
-  <script>
-    const streak = document.getElementById("streak");
-    const input = document.getElementById("answer-field");
-    const bgBlur = document.getElementById("blur");
-    const question = document.getElementById("finalQuestion");
-    const polynomial = document.getElementById("poly").innerText;
-
-    window.onload = () => {
-      setStreak();
-      updateQuestion();
-    };
-
-    function updateQuestion() {
-      let a = document.getElementById("x1").value;
-      let b = document.getElementById("x2").value;
-
-      a = a ? a : String.raw`x_1`;
-      b = b ? b : String.raw`x_2`;
-
-      question.innerHTML = String.raw`\[ \int_{${a}}^{${b}}` + polynomial + String.raw`\,dx = \]`;
-        
-      MathJax.Hub.Typeset();
-    }
-
-    function setStreak(e) {
-      if (input.value >= 100) {
-        streak.classList.add("streak");
-      } else {
-        streak.classList.remove("streak");
-      }
-    }
-
-    function closePopUp(e) {
-      e.classList.remove("shown");
-      bgBlur.classList.remove("active");
-    }
-
-    popups = document.getElementsByClassName("pop");
-    coeffs = document.getElementsByClassName("coeff");
-    for (let i = 0; i < coeffs.length; i++) {
-      coeffs[i].addEventListener("mouseup", () => {
-        popups[i].classList.add("shown");
-        bgBlur.classList.add("active");
-      });
-      closeBtn = popups[i].querySelector("#closePop");
-      closeBtn.addEventListener("mouseup", () => {
-        closePopUp(popups[i]);
-      });
-      sendBtn = popups[i].querySelector("#sendBtn");
-      sendBtn.addEventListener("mouseup", () => {
-        closePopUp(popups[i]);
-        coeffs[i].innerText = popups[i].querySelector("#pop-answer").value;
-      });
-    }
-  </script>
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script
+    type="text/javascript"
+    async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+  ></script>
+  <script
+    type="text/javascript"
+    src="{{ url_for('static',filename='js/script.js') }}"
+  ></script>
 </html>

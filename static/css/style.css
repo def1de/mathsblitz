@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap");
 
+/* Basic */
+
 :root {
   --color-primary: #0d0d0d;
   --color-secondary: #202020;
@@ -23,7 +25,7 @@ header {
   position: relative;
 }
 
-#streak {
+.streakbox {
   position: absolute;
   right: 50px;
   font-size: 2rem;
@@ -68,6 +70,18 @@ main {
   margin-right: 15px;
   cursor: pointer;
 }
+
+/* Validation */
+
+.valid {
+  background-color: green !important;
+}
+
+.invalid {
+  background-color: red !important;
+}
+
+/* Other */
 
 #blur {
   position: fixed;

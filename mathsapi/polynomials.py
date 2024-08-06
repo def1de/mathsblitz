@@ -4,7 +4,23 @@ import numpy as np
 def create_new_quadratic(roots):
     polynomial_coefficients_float = np.poly(roots)
     polynomial_coefficients_int = np.round(polynomial_coefficients_float).astype(int)
-    poly = np.poly1d(polynomial_coefficients_int)
+
+    #Creating string of polynomial
+    str_poly = f"{polynomial_coefficients_int[0]}x^2"
+
+    if polynomial_coefficients_int[1] < 0:
+        str_poly += f"{polynomial_coefficients_int[1]}x"
+    else:
+        str_poly += f"+{polynomial_coefficients_int[1]}x"
+
+    if polynomial_coefficients_int[2] < 0:
+        str_poly += f"{polynomial_coefficients_int[2]}"
+    else:
+        str_poly += f"+{polynomial_coefficients_int[2]}"
+
+    #Wrapping in LaTeX formula
+    poly = f"\\(\\LARGE {str_poly}\\)"
+    
     return poly
 
 def creating_vertex_equation(coefficients):
