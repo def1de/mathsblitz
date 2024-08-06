@@ -21,6 +21,16 @@ def creating_vertex_equation(coefficients):
 def integral(limit1, limit2):
     #Generating random polynomial
     coefficients = [random.randint(-10, 10) for _ in range(3)]
+    #Check if coefficients are not 0
+    hasZero = True
+    while hasZero:
+        hasZero = False
+        for i in range(3):
+            if coefficients[i] == 0:
+                hasZero = True
+                coefficients[i] = random.randint(-10, 10)
+
+
     poly = np.poly1d(coefficients)
 
     #Integrating
