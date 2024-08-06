@@ -45,7 +45,7 @@
       </div>
 
       <div class="answer">
-        <h1 id="finalQuestion">{{data.Stage3.question}}</h1>
+        <h1 id="finalQuestion"></h1>
         <input
           onchange="setStreak()"
           id="answer-field"
@@ -84,12 +84,31 @@
     {% endfor %}
 
     <span>{{data}}</span>
+    <span id="poly" class="hidden">{{data.Stage3.question}}</span>
   </body>
   <script>
     const streak = document.getElementById("streak");
     const input = document.getElementById("answer-field");
     const bgBlur = document.getElementById("blur");
     const question = document.getElementById("finalQuestion");
+    const polynomial = document.getElementById("poly").innerText;
+
+    window.onload = () => {
+      setStreak();
+      updateQuestion();
+    };
+
+    function updateQuestion() {
+      let a = document.getElementById("x1").value;
+      let b = document.getElementById("x2").value;
+
+      a = a ? a : String.raw`x_1`;
+      b = b ? b : String.raw`x_2`;
+
+      question.innerHTML = String.raw`\[ \int_{${a}}^{${b}}` + polynomial + String.raw`\,dx = \]`;
+        
+      MathJax.Hub.Typeset();
+    }
 
     function setStreak(e) {
       if (input.value >= 100) {
@@ -122,18 +141,5 @@
       });
     }
   </script>
-    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-    <script>
-      function updateQuestion() {
-        let a = document.getElementById("x1").value;
-        let b = document.getElementById("x2").value;
-
-        a = a ? a : String.raw`x_1`;
-        b = b ? b : String.raw`x_2`;
-
-        question.innerHTML = String.raw`\[ \int_{${a}}^{${b}} (x + 2) \,dx = \]`;
-        
-        MathJax.Hub.Typeset();
-      }
-    </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </html>

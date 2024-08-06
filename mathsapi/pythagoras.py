@@ -18,10 +18,10 @@ def find_sides(side):
                 a, b, c, unknown = single_triplet[0], single_triplet[1], single_triplet[2], single_triplet[i]
                 
                 if a != unknown and b != unknown:
-                    return f"A right angle triangle has the sides {a} and {b}. Find c."
+                    return f"A right angle triangle has the sides {a}, {b} and c. Find c."
                 elif a != unknown and c != unknown:
-                    return f"A right angle triangle has the sides {a} and {c}. Find b."
+                    return f"A right angle triangle has the sides {a}, b and {c}. Find b."
                 else:
-                    return f"A right angle triangle has the sides {b} and {c}. Find a."
+                    return f"A right angle triangle has the sides a, {b} and {c}. Find a."
                 
     return False
