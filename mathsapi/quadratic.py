@@ -3,7 +3,7 @@ import numpy as np
 
 def generate_polynomial():
     power = 2
-    roots = np.random.randint(-11, 11, power)
+    roots = np.random.randint(-10, 10, power)
     print("Current basic roots are:" + str(list(roots)))
 
     polynomial_coefficients_float = np.poly(roots)
