@@ -139,6 +139,7 @@ async function validate() {
     streak.classList.add("streak");
     increaseStreak();
   }
+  setTimeout(clearValidation, 2000);
 }
 
 function clearValidation() {

@@ -11,10 +11,7 @@ def index():
 def validate():
     req = request.get_json()
     data = req["answers"]
-    print(data)
     answers = get_answers()
-    print(answers)
     res = list(map(lambda x, y: x == y, data, answers))
-    print(res)
 
     return jsonify(res)
