@@ -1,27 +1,35 @@
 import mathsapi.quadratic as quadratic
 import mathsapi.polynomials as polynomials
 import mathsapi.pythagoras as pythagoras
-
+import mathsapi.determinant as determinant
+import mathsapi.simultaneous_equation as simultaneous_equation
 import schedule
 import time
 import threading
+import random
 
 
 def get_json():
     roots, coeff = quadratic.generate_polynomial()
     print("Coefficients: ", coeff)
     question1 = polynomials.creating_vertex_equation(coeff[0])
-    question2 = (
-        pythagoras.find_sides(coeff[1])
-        if coeff[1] > 2 and pythagoras.check_pythagoras(coeff[1])
-        else polynomials.creating_vertex_equation(coeff[1])
-    )
-    question3 = (
+    if random.randint(0, 1):
+        question2 = determinant.create_matrix_with_determinant(coeff[1])
+    else:
+        question2 = (
+            pythagoras.find_sides(coeff[1])
+            if coeff[1] > 2 and coeff[1] < 20 and pythagoras.check_pythagoras(coeff[1])
+            else polynomials.creating_vertex_equation(coeff[1])
+        )
+
+    question3 = simultaneous_equation.simultaneous_equation(coeff[2])
+    """
+    (
         pythagoras.find_sides(coeff[2])
-        if coeff[2] > 2 and coeff[2] < 10 and pythagoras.check_pythagoras(coeff[2])
+        if coeff[2] > 2 and coeff[2] < 20 and pythagoras.check_pythagoras(coeff[2])
         else polynomials.creating_vertex_equation(coeff[2])
     )
-
+    """
     final_question, final_answer = polynomials.integral(roots[0], roots[1])
     print("Final Question: ", final_question)
 

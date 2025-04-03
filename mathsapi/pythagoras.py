@@ -1,6 +1,8 @@
 def check_pythagoras(side):
     triplets = [
         [3, 4, 5],
+        [5, 12, 13],
+        [7, 24, 25],
     ]
     for triplet in triplets[::-1]:
         for i in range(3):
@@ -13,6 +15,8 @@ def check_pythagoras(side):
 def find_sides(side):
     triplets = [
         [3, 4, 5],
+        [5, 12, 13],
+        [7, 24, 25],
     ]
     """
     triplets = [
