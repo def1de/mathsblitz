@@ -7,6 +7,8 @@ def findRandom(determinant):
         return random.randint((determinant // 2), 1)
     if determinant > 1:
         return random.randint(1, (determinant // 2))
+    if determinant == 1:
+        return random.randint(-1, 1)
 
 
 def create_matrix_with_determinant(determinant):
@@ -26,10 +28,10 @@ def create_matrix_with_determinant(determinant):
         d = findRandom(determinant)
         g = (-section2 + (c * d * h)) / (e * c)
 
-        if int(g) == g:
+        if np.isfinite(g) and (isinstance(g, int) or g.is_integer()):
             g = int(g)
             found = True
-    print("not found")
+    # print("not found")
     b = 0
     print("Matrix:", a, b, c, d, e, f, g, h, i)
 
